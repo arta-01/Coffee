@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Row, Button } from "reactstrap";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, UNSAFE_NavigationContext } from "react-router-dom";
 
 // we do not have a logo for shop {mehdi :D}
 import logo from "../../assets/images/logo.png";
@@ -26,10 +26,10 @@ const Header = () => {
     <header className="header">
       <Container>
         <Row>
-          <div className="nav__wrapper d-flex-align-items-center justify-content-between">
+          <div className="nav__wrapper d-flex align-items-center justify-content-between">
             {/* ========= logo ========= */}
             <div className="logo">
-              <img src="" alt="" />
+              <img src={logo} alt="" />
             </div>
             {/* ========= logo end========= */}
 
@@ -37,7 +37,7 @@ const Header = () => {
             <div className="navigation">
               <ul className="menu d-flex align-item-center gap-5">
                 {nav__links.map((item, index) => (
-                  <li className="nav__item">
+                  <li className="nav__item" key={index}>
                     <NavLink
                       to={item.path}
                       className={(navClass) =>
